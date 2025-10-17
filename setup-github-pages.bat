@@ -2,9 +2,23 @@
 echo Setting up GitHub Pages deployment...
 echo.
 
-REM Copy index.html to root
-copy "68d23d8f7f301.site123.me\index.html" . >nul
-echo ✓ Copied index.html to root directory
+REM Copy all HTML pages to root
+copy "68d23d8f7f301.site123.me\index.html" . >nul 2>&1
+echo ✓ Copied index.html
+
+copy "68d23d8f7f301.site123.me\about.html" . >nul 2>&1
+echo ✓ Copied about.html
+
+copy "68d23d8f7f301.site123.me\services.html" . >nul 2>&1
+echo ✓ Copied services.html
+
+copy "68d23d8f7f301.site123.me\store.html" . >nul 2>&1
+echo ✓ Copied store.html
+
+REM Copy store folder with all product pages
+if exist "store\" rmdir /s /q "store" >nul 2>&1
+xcopy "68d23d8f7f301.site123.me\store" "store\" /E /I /Q /Y >nul 2>&1
+echo ✓ Copied store folder with all product pages
 
 REM Initialize git
 git init >nul 2>&1
